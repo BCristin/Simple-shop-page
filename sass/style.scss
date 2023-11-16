@@ -1,8 +1,82 @@
 @import 'reset';
+
 * {
 	font-family: 'Jost', sans-serif;
+	font-size: 22px;
+	font-weight: 400;
+	font-style: normal;
+	line-height: normal;
+
+	text-align: center;
+
+	color: #000;
 }
+
 .container {
 	width: 1440px;
-	background-color: #d9d9d9;
+	margin: 0 auto;
+	background-color: #fff;
+}
+
+.menu {
+	&__list {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 50px;
+	}
+
+	&__item {
+		border-right: #000 1px solid;
+		padding: 12px;
+		padding-top: 30px;
+		&:last-child {
+			border-right: none;
+		}
+	}
+
+	&__link {
+		display: block;
+
+		min-width: calc(163px - 24px);
+	}
+
+	&__title {
+		font-size: 32px;
+
+		display: block;
+
+		min-width: calc(394px - 24px);
+
+		letter-spacing: 20.48px;
+	}
+
+	&__social {
+		display: block;
+
+		padding: 2px;
+	}
+}
+
+.search {
+	position: relative;
+
+	&__img {
+		position: absolute;
+		top: 10px;
+		left: 100px;
+	}
+
+	&__input {
+		width: 333px;
+		height: 35px;
+
+		color: #000;
+		border-radius: 48px;
+		background-color: #e7e7e7;
+
+		&::placeholder {
+			color: #000;
+		}
+	}
 }
