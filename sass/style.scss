@@ -1,5 +1,31 @@
 @import 'reset';
 
+// $main-color: #fff;
+// $second-color: #000;
+// $input-color: #e7e7e7;
+// $arrow: url('../icon/arrow-down.svg');
+// $shadow: rgba(0, 0, 0, 0.75);
+
+// $main-color: #000;
+// $second-color: #fff;
+// $input-color: #181818;
+// $arrow: url('../icon/arrow-down-white.svg');
+// $shadow: rgba(255, 255, 255, 0.75);
+
+:root {
+	--main-color: #fff;
+	--second-color: #000;
+	--input-color: #e7e7e7;
+	--arrow: url('../icon/arrow-down.svg');
+	--shadow: rgba(0, 0, 0, 0.75);
+
+	// --main-color: #000;
+	// --second-color: #fff;
+	// --input-color: #181818;
+	// --arrow: url('../icon/arrow-down-white.svg');
+	// --shadow: rgba(255, 255, 255, 0.75);
+}
+
 * {
 	font-family: 'Jost', sans-serif;
 	font-size: 22px;
@@ -9,14 +35,15 @@
 
 	text-align: center;
 
-	color: #000;
+	color: var(--second-color);
 }
 
 body {
+	overflow: hidden;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-
+	background-color: var(--main-color);
 	height: 100%;
 }
 
@@ -28,15 +55,14 @@ html {
 	width: 1440px;
 	margin: 0 auto;
 
-	background-color: #fff;
-	border: #000 1px dotted;
+	background-color: var(--main-color);
 }
 
 .menu {
 	&__list {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		// justify-content: space-between;
 
 		min-height: 50px;
 	}
@@ -46,7 +72,7 @@ html {
 		padding: 12px;
 		padding-top: 30px;
 		padding-bottom: 15px;
-		border-right: #000 1px solid;
+		border-right: var(--second-color) 1px solid;
 
 		&:last-child {
 			border-right: none;
@@ -56,7 +82,7 @@ html {
 	&__link {
 		display: block;
 
-		min-width: calc(163px - 24px);
+		min-width: 135px;
 	}
 
 	&__title {
@@ -74,28 +100,35 @@ html {
 		display: block;
 
 		padding: 2px;
+		path {
+			fill: var(--second-color);
+		}
 	}
 }
 
 .search {
 	position: relative;
 
-	&__img {
+	svg {
 		position: absolute;
 		top: 10px;
 		left: 100px;
+		path {
+			fill: var(--second-color);
+		}
 	}
 
 	&__input {
 		width: 333px;
 		height: 35px;
 
-		color: #000;
+		color: var(--second-color);
 		border-radius: 48px;
-		background-color: #e7e7e7;
+		background-color: var(--input-color);
+		border: var(--second-color) 1px solid;
 
 		&::placeholder {
-			color: #000;
+			color: var(--second-color);
 		}
 	}
 }
@@ -107,12 +140,15 @@ html {
 	}
 
 	&__item {
-		border-right: #000 1px solid;
+		border-right: var(--second-color) 1px solid;
 		min-width: 163px;
 		padding: 12px 0 3px;
+		&:last-child {
+			border-right: none;
+		}
 		&:hover {
-			background-color: #000;
-			color: white;
+			background-color: var(--second-color);
+			color: var(--main-color);
 		}
 	}
 
@@ -120,7 +156,96 @@ html {
 		display: block;
 		color: inherit;
 		&--big {
-			min-width: 625px;
+			min-width: 620px;
+		}
+	}
+}
+
+.content {
+	display: flex;
+	gap: 143px;
+
+	padding: 150px 100px 150px 52px;
+	&__view-image {
+		display: flex;
+		gap: 118px;
+	}
+
+	&__small-images {
+		display: flex;
+		gap: 52px;
+		flex-direction: column;
+		span {
+			margin-top: -19px;
+		}
+	}
+	&__big-images {
+		box-shadow: 7px 13px 0px 0px var(--shadow);
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		gap: 22px;
+	}
+
+	&__title,
+	&__text {
+		text-align: left;
+	}
+
+	&__personalize,
+	&__add,
+	&__material,
+	&__dimensions {
+		width: 100%;
+		border: 1px solid var(--second-color);
+		height: 68px;
+
+		background: var(--main-color);
+	}
+
+	&__add {
+		background: var(--second-color);
+		color: var(--main-color);
+		position: relative;
+		&::after {
+			content: url('../icon/plus.svg');
+			color: white;
+			background-color: var(--main-color);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			line-height: 0;
+			width: 64px;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			position: absolute;
+		}
+	}
+
+	&__text {
+		padding-bottom: 89px - 22px;
+	}
+
+	&__material,
+	&__dimensions {
+		position: relative;
+
+		&::after {
+			content: var(--arrow);
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			line-height: 0;
+			width: 64px;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			position: absolute;
 		}
 	}
 }
